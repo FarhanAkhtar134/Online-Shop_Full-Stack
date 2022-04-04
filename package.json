@@ -1,0 +1,26 @@
+{
+  "name": "online-shop_full-stack",
+  "version": "1.0.0",
+  "description": "Full Stack E-Commerce Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarhanAkhtar134/Online-Shop_Full-Stack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarhanAkhtar134/Online-Shop_Full-Stack/issues"
+  },
+  "homepage": "https://github.com/FarhanAkhtar134/Online-Shop_Full-Stack#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
