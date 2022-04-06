@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/products', function (req,res) {
 
-    res.render('cutomer/products/all-products');
+    res.render('customer/products/all-products');
 
 } ); 
 
