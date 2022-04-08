@@ -73,7 +73,7 @@ main {
   height: calc(100vh - 5rem);
   width: 100%;
   background-color: var(--color-gray-700);
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -82,6 +82,10 @@ main {
   height: 20rem;
   width: 90%;
   margin: var(--space-4) auto;
+}
+
+#mobile-menu.open {
+  display: flex;
 }
 
 #mobile-menu .nav-items a,
