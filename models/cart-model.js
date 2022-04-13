@@ -22,10 +22,11 @@ class Cart {
                 cartItem.quantity = cartItem.quantity + 1;
                 cartItem.totalPrice =  cartItem.totalPrice + product.price; 
                 this.items[i] = cartItem; 
-                return; 
-
                 this.totalQuantity++;
                 this.totalPrice += product.price; 
+                return; 
+
+                
 
             }
         }

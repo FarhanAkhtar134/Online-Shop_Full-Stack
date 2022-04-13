@@ -13,8 +13,9 @@ async function addCartItem(req, res, next) {
 
 
     const cart = res.locals.cart;
+    
 
-    cart.addCartItem(product); 
+    cart.addItem(product); 
     req.session.cart = cart; 
 
     res.status(201).json({
