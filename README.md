@@ -10,8 +10,17 @@ Full Stack E-Commerce Application
 - Model View Controller (MVC). 
 
 ## Initialization 
-- Run npm install to install all the dependencies.
-- Run npm start to start the application on localhost: 3000 
+- Run _npm install_ to install all the dependencies.
+- Run _npm start_ to start the application on localhost: 3000 
+
+## Database setup 
+MongoDB database must be setup for running this application 
+- Database name: online-shop 
+- Collections: 
+  1. orders (for storing customer orders)
+  2. products (for storing different products) 
+  3. sessions (for stroing session data)
+  4. users (for storing customer information)  
 
 ## Overview 
 
@@ -37,5 +46,35 @@ AJAX requests from front end have been used in certain places to implement parti
 - Front-end and back-end validation. 
 - Custom Error handing for different HTTP errors (500, 404, 401, etc.) 
 - AJAX request from front-end. 
+
+
+# Implementation Images 
+
+## Customer side
+
+
+![Login-page](https://user-images.githubusercontent.com/72380768/163576216-276920a8-503b-48bc-9a06-0d5a73a276a5.png)
+
+![Main-page](https://user-images.githubusercontent.com/72380768/163575269-9d66aded-1bef-4dd0-88e2-2fd0920c1beb.png)
+
+![product-detail](https://user-images.githubusercontent.com/72380768/163575285-8d7381e4-baf0-491b-ad6d-9b3b8b39125c.png)
+
+![signup](https://user-images.githubusercontent.com/72380768/163575286-15877e0a-0ac9-47af-9bbc-8222fe7958d1.png)
+
+![Cart-page](https://user-images.githubusercontent.com/72380768/163575288-9090ee2f-a30b-4100-ae2c-ea404b65cffd.png)
+
+
+## Admin side 
+
+![manage-products](https://user-images.githubusercontent.com/72380768/163575620-9e358e36-931d-4174-b966-b67b5afef1ff.png)
+
+![Add-new-product](https://user-images.githubusercontent.com/72380768/163575607-80bfcf73-d214-4105-a6b3-fc0a37bdc82a.png)
+
+![Manage-orders](https://user-images.githubusercontent.com/72380768/163575615-ca7d1e66-f1dd-4ac5-be3e-65284a33d46e.png)
+
+
+
+
+
 
 
