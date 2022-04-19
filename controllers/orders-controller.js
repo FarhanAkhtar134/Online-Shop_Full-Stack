@@ -1,53 +1,78 @@
-const Order = require('../models/order-model'); 
-const User = require('../models/user-model'); 
+const stripe = require("stripe")(
+  "sk_test_51J2vknGl5p2alvv9fXRrUbcHBymB9vRsTihD1mM5tp6InslAl13r9oTZ8gwgNyjYuj1IBdzWrsgs4rHavi0lZwpD00lrvZVH5j"
+);
 
-async function getOrders (req, res) {
-     try {
+const Order = require("../models/order-model");
+const User = require("../models/user-model");
+
+async function getOrders(req, res) {
+  try {
     const orders = await Order.findAllForUser(res.locals.uid);
-    res.render('customer/orders/all-orders', {
+    res.render("customer/orders/all-orders", {
       orders: orders,
     });
   } catch (error) {
     next(error);
   }
-
 }
 
+async function addOrder(req, res, next) {
+  const cart = res.locals.cart;
 
+  let userDocument;
+  try {
+    userDocument = await User.findById(res.locals.uid);
+  } catch (error) {
+    next(error);
+    return;
+  }
 
-async function addOrder (req, res, next) {
-    const cart = res.locals.cart; 
+  //console.log(userDocument);
 
-    let userDocument; 
-    try {
-         userDocument = await User.findById(res.locals.uid); 
-        
-    } catch (error) {
-        next(error); 
-        return; 
-        
-    }
+  const order = new Order(cart, userDocument);
 
-    console.log(userDocument); 
+  try {
+    await order.save();
+  } catch (error) {
+    next(error);
+    return;
+  }
 
-    const order = new Order(cart,userDocument ); 
+  req.session.cart = null;
 
-    try {
-       await order.save(); 
-        
-    } catch (error) {
-        next(error); 
-        return; 
-    }
+  const session = await stripe.checkout.sessions.create({
+    line_items: cart.items.map(function (item) {
+      return {
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: item.product.title,
+          },
+          unit_amount: +item.product.price.toFixed(2) * 100,
+        },
+        quantity: item.quantity,
+      };
+    }),
 
-    req.session.cart = null; 
+    mode: "payment",
+    success_url: `http://localhost:3000/orders/success`,
+    cancel_url: `http://localhost:3000/orders/failure`,
+  });
 
-    res.redirect('/orders'); 
-    
+  res.redirect(303, session.url);
+}
 
+function getSuccess(req, res) {
+  res.render("customer/orders/success");
+}
+
+function getFailure(req, res) {
+  res.render("customer/orders/failure");
 }
 
 module.exports = {
-    addOrder: addOrder, 
-    getOrders: getOrders, 
-}
+  addOrder: addOrder,
+  getOrders: getOrders,
+  getSuccess: getSuccess,
+  getFailure: getFailure,
+};
