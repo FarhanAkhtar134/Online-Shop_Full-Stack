@@ -4,7 +4,8 @@ Full Stack E-Commerce Application
 ## Stack Used 
 - HTML5, CSS, Javascript for FrontEnd. 
 - NodeJs, Express for Backend.
-- MongoDB NoSQL database. 
+- MongoDB NoSQL database.
+- Stripe payment module.  
 
 ## Design Pattern Used
 - Model View Controller (MVC). 
@@ -46,6 +47,7 @@ AJAX requests from front end have been used in certain places to implement parti
 - Front-end and back-end validation. 
 - Custom Error handing for different HTTP errors (500, 404, 401, etc.) 
 - AJAX request from front-end. 
+- Stripe payment solution has been integrated to allow payment function to customers buying products.
 
 
 # Implementation Images 
